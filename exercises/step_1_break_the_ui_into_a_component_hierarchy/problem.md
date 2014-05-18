@@ -38,11 +38,11 @@ console.log('    ChildOfChild')
 Make a Node.js program:
 
 ```sh
-$ node program.js
+$ node solution_1.js
 ```
 
 When you are done, you must run:
 
 ```sh
-$ {appname} verify program.js
+$ {appname} verify solution_1.js
 ```
