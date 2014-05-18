@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/asbjornenge/thinking-in-react",
   "dependencies": {
-    "workshopper": "^1.0.0-alpha07"
+    "workshopper": "^1.0.0-alpha07",
+    "workshopper-exercise": "^0.2.3"
   }
 }
