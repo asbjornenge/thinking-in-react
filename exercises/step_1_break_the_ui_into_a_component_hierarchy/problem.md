@@ -24,15 +24,13 @@ But how do you know what should be its own component? Just use the same techniqu
 
 # EXERCISE HINT
 
-Make a simple javascript object {} with the Hirearchy. All values are also objects:
+Output each component to the console. Use TWO spaces to indicate child component:
 
 ```js
-var hierarchy = {
-    FirstComponent : {
-        AChildComponent : {},
-        AnotherChild : {}
-    }
-}
+console.log('FirstComponent')
+console.log('  Child')
+console.log('  AnotherChild')
+console.log('    ChildOfChild')
 ```
 
 # HINT
