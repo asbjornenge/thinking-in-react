@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/asbjornenge/thinking-in-react/issues"
   },
-  "homepage": "https://github.com/asbjornenge/thinking-in-react"
+  "homepage": "https://github.com/asbjornenge/thinking-in-react",
+  "dependencies": {
+    "workshopper": "^1.0.0-alpha07"
+  }
 }
