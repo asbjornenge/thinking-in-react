@@ -2,7 +2,7 @@
   "name": "thinking-in-react",
   "version": "0.0.0",
   "description": "Thinking in React workshopper",
-  "main": "thinking-in-react.js",
+  "bin": "./thinking-in-react.js",
   "scripts": {
     "test": "mocha"
   },
