@@ -1,0 +1,24 @@
+{
+  "name": "thinking-in-react",
+  "version": "0.0.0",
+  "description": "Thinking in React workshopper",
+  "main": "thinking-in-react.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/asbjornenge/thinking-in-react.git"
+  },
+  "keywords": [
+    "react",
+    "workshopper",
+    "workshopper-module"
+  ],
+  "author": "Asbjorn Enge <asbjorn@hanafjedle.net>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/asbjornenge/thinking-in-react/issues"
+  },
+  "homepage": "https://github.com/asbjornenge/thinking-in-react"
+}
