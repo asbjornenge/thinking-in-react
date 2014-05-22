@@ -22,7 +22,11 @@
   },
   "homepage": "https://github.com/asbjornenge/thinking-in-react",
   "dependencies": {
+    "envify": "^1.2.1",
+    "jsdom": "^0.10.5",
+    "react": "^0.10.0",
     "workshopper": "^1.0.0-alpha07",
-    "workshopper-exercise": "^0.2.3"
+    "workshopper-exercise": "^0.2.3",
+    "workshopper-wrappedexec": "^0.1.1"
   }
 }
