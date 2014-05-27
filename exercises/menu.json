@@ -1,6 +1,6 @@
 [
     "Step 1   : Break the UI into a component hierarchy"
-  , "Step 2.1 : Build static version - FilterableProductTable"
-  , "Step 2.2 : Build static version - SearchBar"
-  , "Step 2.3 : Build static version - ProductTable"
+  , "Step 2-1 : Static version - FilterableProductTable"
+  , "Step 2-2 : Static version - SearchBar"
+  , "Step 2-3 : Static version - ProductTable"
 ]

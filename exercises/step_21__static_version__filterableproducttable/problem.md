@@ -1,4 +1,4 @@
-Build a static version in React
+Build a static version in React - FilterableProductTable
 
 ----------------------------------------------------------------------
 

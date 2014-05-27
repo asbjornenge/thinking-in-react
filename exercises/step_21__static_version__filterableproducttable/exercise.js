@@ -21,11 +21,10 @@ exercise.addSetup(function (mode, callback) {
     global.Solution  = require(path.resolve(process.cwd(), process.argv[3]))
 
     if (typeof Solution != 'function')
-      return console.log(file, 'does not export a function. HINT: Use module.exports')
+      return console.log(file, 'does not export a function. HINT: Use module.exports = ReactComponent to export your component.')
 
     var mocha = new Mocha()
     mocha.ui('bdd')
-    console.log(__dirname)
     mocha.addFile(__dirname+'/spec.js')
     mocha.run(function(failures) {
         this.failures = failures
