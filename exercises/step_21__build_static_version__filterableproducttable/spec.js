@@ -24,12 +24,4 @@ describe('Static version', function() {
         })
     })
 
-    it('should contain a SearchBar', function(done) {
-        var _comp = render(function() {
-            var _searchBar = ReactTestUtils.scryRenderedDOMComponentsWithClass(_comp, 'SearchBar')
-            assert(_searchBar.length, 1)
-            done()
-        })        
-    })
-
 })
