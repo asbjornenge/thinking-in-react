@@ -13,5 +13,4 @@ exercise = execute(exercise)
 // compare stdout of solution and submission
 exercise = comparestdout(exercise)
 
-
 module.exports = exercise

@@ -3,4 +3,5 @@
   , "Step 2-1 : Static version - FilterableProductTable"
   , "Step 2-2 : Static version - SearchBar"
   , "Step 2-3 : Static version - ProductTable"
+  , "Step 3   : Identify the minimal repr. of UI state"
 ]
