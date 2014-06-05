@@ -17,7 +17,7 @@ Let's go through each one and figure out which one is state. Simply ask three qu
 2. Does it change over time? If not, it probably isn't state.
 3. Can you compute it based on any other state or props in your component? If so, it's not state.
 
-When you have identified the states, output them to the console. 1 state pr. line.
+When you have identified the states, output them to the console.
 
     console.log('The something something')
     console.log('That other thing')
