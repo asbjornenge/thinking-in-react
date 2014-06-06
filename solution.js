@@ -128,3 +128,4 @@ var FilterableProductTable = React.createClass({
 
 module.exports.FilterableProductTable = FilterableProductTable
 module.exports.SearchBar = SearchBar
+module.exports.ProductTable = ProductTable
