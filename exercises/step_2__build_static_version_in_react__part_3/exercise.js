@@ -1,0 +1,1 @@
+module.exports = require('../mocha_exercise')
