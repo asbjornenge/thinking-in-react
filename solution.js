@@ -127,5 +127,7 @@ var FilterableProductTable = React.createClass({
 });
 
 module.exports.FilterableProductTable = FilterableProductTable
-module.exports.SearchBar = SearchBar
-module.exports.ProductTable = ProductTable
+module.exports.SearchBar              = SearchBar
+module.exports.ProductTable           = ProductTable
+module.exports.ProductRow             = ProductRow
+module.exports.ProductCategoryRow     = ProductCategoryRow
