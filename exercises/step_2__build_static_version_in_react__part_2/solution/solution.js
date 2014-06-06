@@ -3,9 +3,7 @@ var React = require('react')
 var SearchBar = React.createClass({
     render: function() {
         return (
-            React.DOM.form({
-                className : 'SearchBar'
-            }, [
+            React.DOM.form({}, [
                 React.DOM.input({
                     type        : 'text',
                     placeholder : 'Search...'
@@ -22,13 +20,12 @@ var SearchBar = React.createClass({
 var FilterableProductTable = React.createClass({
     render: function() {
         return (
-            React.DOM.div({
-                className :  'FilterableProductTable'
-            }, [
+            React.DOM.div({}, [
                 SearchBar()
             ])
         );
     }
 });
 
-module.exports = FilterableProductTable
+module.exports.FilterableProductTable = FilterableProductTable
+module.exports.SearchBar = SearchBar
