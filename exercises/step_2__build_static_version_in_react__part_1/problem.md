@@ -10,6 +10,8 @@ You can build top-down or bottom-up. That is, you can either start with building
 
 Let's build top-down. Build the top level component; `FilterableProductTable`.
 
+Simply refer to the React docs if you need help executing this step; `http://facebook.github.io/react/docs/getting-started.html`
+
 # HINT(s)
 
 You are going to need reactjs for this exercise. Install it using npm.
