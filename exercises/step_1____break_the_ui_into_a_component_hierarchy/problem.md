@@ -1,8 +1,12 @@
-Break your UI into components
+# Introduction
 
-----------------------------------------------------------------------
+React is, in my opinion, the premier way to build big, fast Web apps with JavaScript. It's scaled very well for Facebook and Instagram.
 
-The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names.
+One of the many great parts of React is how it makes you think about apps as you build them. In this exercise we will walk through the thought process of building a searchable product data table using React.
+
+# Start with a mock
+
+Imagine that we already have a JSON API and a mock from our designer. Our designer apparently isn't very good because the mock looks like this:
 
     [--------------------------------]
     | Search                         |
@@ -20,11 +24,13 @@ The first thing you'll want to do is to draw boxes around every component (and s
     | Nexus 7             $199.99    |
     [--------------------------------]
 
-But how do you know what should be its own component? Just use the same techniques for deciding if you should create a new function or object. One such technique is the single responsibility principle, that is, a component should ideally only do one thing. If it ends up growing it should be decomposed into smaller subcomponents.
+# Break the UI into a component hierarchy
 
-# EXERCISE HINT
+The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. But how do you know what should be its own component? Just use the same techniques for deciding if you should create a new function or object. One such technique is the single responsibility principle, that is, a component should ideally only do one thing. If it ends up growing it should be decomposed into smaller subcomponents.
 
-Output each component to the console. Use TWO spaces to indicate child component:
+# Exercise:
+
+Output each component to the console. Use TWO spaces to indicate child components:
 
 ```js
 console.log('FirstComponent')
@@ -33,15 +39,15 @@ console.log('  AnotherChild')
 console.log('    ChildOfChild')
 ```
 
-# HINT
+# General hints
 
-Make a Node.js program:
+Run your solution:
 
 ```sh
-$ node solution_1.js
+$ {appname} run solution_1.js
 ```
 
-When you are done, you must run:
+When you are done, verify:
 
 ```sh
 $ {appname} verify solution_1.js
