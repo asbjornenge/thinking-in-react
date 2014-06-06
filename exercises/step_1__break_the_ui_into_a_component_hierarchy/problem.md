@@ -39,7 +39,7 @@ console.log('  AnotherChild')
 console.log('    ChildOfChild')
 ```
 
-# HINT
+# HINT(s)
 
 Run your solution:
 

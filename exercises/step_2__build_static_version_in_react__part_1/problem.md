@@ -8,11 +8,9 @@ You can build top-down or bottom-up. That is, you can either start with building
 
 # Exercise
 
-Let's build top-down. Build the top level component; `FilterableProductTable.
+Let's build top-down. Build the top level component; `FilterableProductTable`.
 
-# HINT
-
-## Install react
+# HINT(s)
 
 You are going to need reactjs for this exercise. Install it using npm.
 
@@ -20,17 +18,13 @@ You are going to need reactjs for this exercise. Install it using npm.
 $ npm install react
 ```
 
-## Import react
-
 If you are unfamiliar with the commonjs format, here is how you can import the react library into your solution.
 
 ```js
 var React = require('react')
 ```
 
-## Basic component
-
-Here is what a really basic React component looks like.
+Here is what a really basic React component looks like (JSX syntax is optional, I prefer not to use it).
 
 ```js
 var AComponent = React.createClass({
@@ -42,14 +36,8 @@ var AComponent = React.createClass({
 });
 ```
 
-## Export as module
-
 So that I can verify your solution you need to export it.
 
 ```js
 module.exports = AComponent
 ```
-
-## A note on JSX
-
-Using jsx syntax with thinking-in-react is optional. I prefer the javascript syntax so none of the examples will use jsx.
