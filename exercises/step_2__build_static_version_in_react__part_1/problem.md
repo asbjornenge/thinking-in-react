@@ -41,5 +41,5 @@ var FilterableProductTable = React.createClass({
 So that I can verify your solution you need to export it.
 
 ```js
-module.exports = FilterableProductTable
+module.exports.FilterableProductTable = FilterableProductTable
 ```
