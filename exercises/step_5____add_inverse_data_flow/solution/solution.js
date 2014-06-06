@@ -3,9 +3,7 @@ var React = require('react')
 var ProductCategoryRow = React.createClass({
     render: function() {
         return (
-            React.DOM.tr({
-                className : 'ProductCategoryRow'
-            }, [
+            React.DOM.tr({}, [
                 React.DOM.th({
                     colSpan : 2
                 }, this.props.category)
@@ -22,9 +20,7 @@ var ProductRow = React.createClass({
                 style : { color : 'red' }
             }, this.props.product.name)
         return (
-            React.DOM.tr({
-                className : 'ProductRow'
-            }, [
+            React.DOM.tr({}, [
                 React.DOM.td({}, name),
                 React.DOM.td({}, this.props.product.price)
             ])
@@ -47,9 +43,7 @@ var ProductTable = React.createClass({
             lastCategory = product.category;
         }.bind(this));
         return (
-            React.DOM.table({
-                className : 'ProductTable'
-            },[
+            React.DOM.table({},[
                 React.DOM.thead({}, [
                     React.DOM.tr({}, [
                         React.DOM.th({},'Name'),
@@ -71,9 +65,7 @@ var SearchBar = React.createClass({
     },
     render: function() {
         return (
-            React.DOM.form({
-                className : 'SearchBar'
-            }, [
+            React.DOM.form({}, [
                 React.DOM.input({
                     type        : 'text',
                     placeholder : 'Search...',
@@ -110,9 +102,7 @@ var FilterableProductTable = React.createClass({
     },
     render: function() {
         return (
-            React.DOM.div({
-                className :  'FilterableProductTable'
-            }, [
+            React.DOM.div({}, [
                 SearchBar({
                     filterText  : this.state.filterText,
                     inStockOnly : this.state.inStockOnly,
@@ -128,4 +118,8 @@ var FilterableProductTable = React.createClass({
     }
 });
 
-module.exports = FilterableProductTable
+module.exports.FilterableProductTable = FilterableProductTable
+module.exports.SearchBar              = SearchBar
+module.exports.ProductTable           = ProductTable
+module.exports.ProductRow             = ProductRow
+module.exports.ProductCategoryRow     = ProductCategoryRow
