@@ -3,6 +3,7 @@ var exercise      = require('workshopper-exercise')()
   , execute       = require('workshopper-exercise/execute')
   , comparestdout = require('workshopper-exercise/comparestdout')
   , wrappedexec   = require('workshopper-wrappedexec')
+  , printer       = require('workshopper/print-text')
   , path          = require('path')
   , jsdom         = require('jsdom').jsdom
   , Mocha         = require('mocha')
@@ -35,11 +36,15 @@ exercise.addSetup(function (mode, callback) {
 
 // Verify
 exercise.addVerifyProcessor(function (callback) {
-  var exercise = this
-  var passed = this.failures == 0
-  if (passed) this.emit('pass', 'Looks good!')
-  else this.emit('fail', "Tests don't pass")
-  callback(null, passed)
+    var exercise = this
+    var passed = this.failures == 0
+    if (passed) this.emit('pass', 'Looks good!')
+    else this.emit('fail', "Tests don't pass")
+    callback(null, passed)
+})
+
+exercise.addCleanup(function (mode, passed, callback) {
+    printer.file(this.workshopper.appName, this.workshopper.appDir, this.workshopper.appDir+'/exercises/final_words.md')
 })
 
 module.exports = exercise
