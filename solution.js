@@ -63,6 +63,12 @@ var ProductTable = React.createClass({
 });
 
 var SearchBar = React.createClass({
+    handleChange : function(e) {
+        this.props.onUserInput(
+            this.refs.filterTextInput.getDOMNode().value,
+            this.refs.inStockOnlyInput.getDOMNode().checked
+        )
+    },
     render: function() {
         return (
             React.DOM.form({
@@ -71,10 +77,17 @@ var SearchBar = React.createClass({
                 React.DOM.input({
                     type        : 'text',
                     placeholder : 'Search...',
-                    value       : this.props.filterText
+                    value       : this.props.filterText,
+                    ref         : 'filterTextInput',
+                    onChange    : this.handleChange
                 }),
                 React.DOM.p({},[
-                    React.DOM.input({ type : 'checkbox', value : this.props.inStockOnly }),
+                    React.DOM.input({
+                        type     : 'checkbox', 
+                        value    : this.props.inStockOnly,
+                        ref      : 'inStockOnlyInput',
+                        onChange : this.handleChange
+                    }),
                     'Only show products in stock'
                 ])
             ])
@@ -89,14 +102,19 @@ var FilterableProductTable = React.createClass({
             inStockOnly : false
         }
     },
+    handleUserInput : function(filterText, inStockOnly) {
+        this.setState({
+            filterText  : filterText,
+            inStockOnly : inStockOnly
+        })
+    },
     render: function() {
         return (
-            React.DOM.div({
-                className :  'FilterableProductTable'
-            }, [
+            React.DOM.div({}, [
                 SearchBar({
                     filterText  : this.state.filterText,
-                    inStockOnly : this.state.inStockOnly
+                    inStockOnly : this.state.inStockOnly,
+                    onUserInput : this.handleUserInput
                 }),
                 ProductTable({ 
                     products    : this.props.products,
@@ -108,4 +126,4 @@ var FilterableProductTable = React.createClass({
     }
 });
 
-module.exports = FilterableProductTable
+module.exports.FilterableProductTable = FilterableProductTable

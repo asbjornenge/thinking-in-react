@@ -29,7 +29,7 @@ var React = require('react')
 Here is what a really basic React component looks like (JSX syntax is optional, I prefer not to use it).
 
 ```js
-var AComponent = React.createClass({
+var FilterableProductTable = React.createClass({
     render: function() {
         return (
             React.DOM.div({}, [])
@@ -41,5 +41,5 @@ var AComponent = React.createClass({
 So that I can verify your solution you need to export it.
 
 ```js
-module.exports = AComponent
+module.exports = FilterableProductTable
 ```

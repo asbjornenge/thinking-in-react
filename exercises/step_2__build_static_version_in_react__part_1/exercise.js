@@ -20,8 +20,10 @@ exercise.addSetup(function (mode, callback) {
     global.navigator = window.navigator
     global.Solution  = require(path.resolve(process.cwd(), process.argv[3]))
 
-    if (typeof Solution != 'function')
-      return console.log(file, 'does not export a function. HINT: Use module.exports = ReactComponent to export your component.')
+    if (typeof Solution != 'object') {
+      this.emit('fail', 'Your solution does not export an object. HINT: Use module.exports.Component = Component to export your component.')
+      return
+    }
 
     var mocha = new Mocha()
     mocha.ui('bdd')
