@@ -1,9 +1,9 @@
 [
-    "Step 1   : Break the UI into a component hierarchy"
-  , "Step 2-1 : Static version - FilterableProductTable"
-  , "Step 2-2 : Static version - SearchBar"
-  , "Step 2-3 : Static version - ProductTable"
-  , "Step 3   : Identify the minimal repr. of UI state"
-  , "Step 4   : Identify where your state should live"
-  , "Step 5   : Add inverse data flow"
+    "Step 1 : Break the UI into a component hierarchy"
+  , "Step 2 : Build static version in React - part 1"
+  , "Step 2 : Build static version in React - part 2"
+  , "Step 2 : Build static version in React - part 3"
+  , "Step 3 : Identify the minimal repr. of UI state"
+  , "Step 4 : Identify where your state should live"
+  , "Step 5 : Add inverse data flow"
 ]

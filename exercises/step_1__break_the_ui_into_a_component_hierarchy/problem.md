@@ -28,7 +28,7 @@ Imagine that we already have a JSON API and a mock from our designer. Our design
 
 The first thing you'll want to do is to draw boxes around every component (and subcomponent) in the mock and give them all names. But how do you know what should be its own component? Just use the same techniques for deciding if you should create a new function or object. One such technique is the single responsibility principle, that is, a component should ideally only do one thing. If it ends up growing it should be decomposed into smaller subcomponents.
 
-# Exercise:
+# Exercise
 
 Output each component to the console. Use TWO spaces to indicate child components:
 
@@ -39,7 +39,7 @@ console.log('  AnotherChild')
 console.log('    ChildOfChild')
 ```
 
-# General hints
+# HINT
 
 Run your solution:
 
