@@ -1,6 +1,6 @@
 {
   "name": "thinking-in-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Thinking in React workshopper",
   "bin": "./thinking-in-react.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "jsdom": "^0.10.5",
     "mocha": "^1.19.0",
     "react": "^0.10.0",
-    "workshopper": "^1.0.0-alpha07",
+    "workshopper": "git://github.com/rvagg/workshopper.git#cef8219ca2919964113c6daedd78a5db8404051b",
     "workshopper-exercise": "^0.2.3",
     "workshopper-wrappedexec": "^0.1.1"
   }
