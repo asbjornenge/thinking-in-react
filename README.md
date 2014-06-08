@@ -6,7 +6,7 @@ It will hopefully help you get started with React and help you to get a good wor
 
 ## Install
 
-	npm install -g thinking-in-react
+	$ npm install -g thinking-in-react
 	
 ## Usage
 
