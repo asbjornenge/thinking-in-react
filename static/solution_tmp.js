@@ -32,7 +32,6 @@ var ProductRow = React.createClass({
     }
 });
 
-
 var ProductTable = React.createClass({
     render: function() {
         var rows = [];
@@ -95,8 +94,6 @@ var SearchBar = React.createClass({
         );
     }
 });
-
-
 
 var FilterableProductTable = React.createClass({
     getInitialState : function() {
