@@ -5,18 +5,17 @@ var screen = blessed.screen();
 
 // Create a box perfectly centered horizontally and vertically.
 var box = blessed.form({
-  name : 'STATE BINGO',
   top: 'center',
   left: 'center',
   width: '90%',
   height: '90%',
-  content: '{center}Lets play State BINGO!{/center}',
+  content: '{center}Lets play STATE BINGO!\nNavigate using UP and DOWN arrow keys.\n{/center}',
   tags: true,
   border: {
     type: 'line'
   },
   style: {
-    fg: 'white',
+    fg: 'blue',
     border: {
       fg: '#f0f0f0'
     },
@@ -28,7 +27,7 @@ var box = blessed.form({
 
 box.prepend(new blessed.Text({  
   left: 2,
-  content: 'STATE-BINGO-BOARD'
+  content: 'STATE-BINGO'
 }));
 
 var states = [
