@@ -5,8 +5,8 @@ var blessed     = require("blessed"),
     box         = blessed.box({
         top     : "center",
         left    : "center",
-        width   : 77,
-        height  : 30,
+        width   : 78,
+        height  : 29,
         content : exercise().intro,
         tags    : true,
         padding : {
@@ -22,6 +22,45 @@ var blessed     = require("blessed"),
                 fg  : "#fff"
             }
         }
+    }),
+    progBar     = blessed.box({
+        top     : 23,
+        left    : 4,
+        width   : 70,
+        height  : 1,
+        tags    : true,
+        style   : {
+            bg  : "blue"
+        }
+    }),
+    progressed  = blessed.box({
+        top     : 23,
+        left    : 4,
+        width   : 14,
+        height  : 1,
+        tags    : true,
+        style   : {
+            bg  : "yellow"
+        }
+    }),
+    percentage  = blessed.box({
+        top     : 21,
+        left    : "center",
+        width   : 4,
+        height  : 1,
+        tags    : true,
+        content : "0%",
+        style   : {
+            color   : "#fff"
+        }
+    }),
+    navBar      = blessed.box({
+        top     : 26,
+        left    : 3,
+        width   : 71,
+        height  : 2,
+        tags    : true,
+        content : "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}               {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
     }),
     component   = [],
     spacer      = "                                        ";
@@ -56,23 +95,31 @@ var blessed     = require("blessed"),
                         (i*2)+2,
                         spacer+exercise().steps[i].treePrepend[0]+exercise().steps[i].title
                     );
+                    box.setLine(
+                        16,
+                        exercise().steps[i].description
+                    );
                 }
                 box.setLine(
                     0,
-                    "GUI representation:                   Component tree:"
+                    "GUI representation:                      Component tree:"
                 );
                 box.setLine(
                     1,
                     ""
                 );
-                box.setLine(
-                    16,
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                );
-                box.setLine(
-                    22,
-                    "< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}                {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >"
-                );
+                progressed.width = 14*(progress+1);
+                percentage.content = 20*(progress+1)+"%";
+                navBar.content = (progress === -1 || progress === 0) ?
+                        "{yellow-fg}                                            {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
+                    :
+                        "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}               {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
+                if (progress !== -1) {
+                    box.append(progBar);
+                }
+                box.append(progressed);
+                box.append(percentage);
+                box.append(navBar);
                 screen.render();
             };
 
@@ -82,7 +129,7 @@ var blessed     = require("blessed"),
         } else if (direction === "prev" && progress > 0) {
             progress -= 1;
             render()
-        } else if (direction === "prev" && progress === 0) {
+        } else if (direction === "prev" && progress === -1) {
             box.setContent(exercise().intro);
             screen.render();
         }

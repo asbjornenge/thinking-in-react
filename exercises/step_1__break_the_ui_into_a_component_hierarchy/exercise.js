@@ -6,10 +6,10 @@ var exercise    = function() {
                     [
                         {
                             title       : "FilterableProductTable",
-                            description : "This is our topmost component...",
+                            description : "1) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             treePrepend : [
-                                "",
-                                " "
+                                " ",
+                                "  "
                             ],
                             size        : {
                                 width   : 36,
@@ -22,10 +22,10 @@ var exercise    = function() {
                         },
                         {
                             title       : "SearchBar",
-                            description : "Blah blah...",
+                            description : "2) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             treePrepend : [
-                                " |---",
-                                " "
+                                "  |---",
+                                "  "
                             ],
                             size        : {
                                 width   : 34,
@@ -38,10 +38,10 @@ var exercise    = function() {
                         },
                         {
                             title       : "ProductTable",
-                            description : "Blah blah...",
+                            description : "3) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             treePrepend : [
-                                " |---",
-                                " "
+                                "  |---",
+                                "  "
                             ],
                             size        : {
                                 width   : 34,
@@ -54,10 +54,10 @@ var exercise    = function() {
                         },
                         {
                             title       : "ProductCategoryRow",
-                            description : "Blah blah...",
+                            description : "4) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             treePrepend : [
-                                "      |---",
-                                "      "
+                                "       |---",
+                                "       "
                             ],
                             size        : {
                                 width   : 32,
@@ -70,10 +70,10 @@ var exercise    = function() {
                         },
                         {
                             title       : "ProductRow",
-                            description : "Blah blah...",
+                            description : "5) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             treePrepend : [
-                                "      |---",
-                                "      "
+                                "       |---",
+                                "       "
                             ],
                             size        : {
                                 width   : 32,
