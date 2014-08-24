@@ -73,38 +73,37 @@ var cbs = require('./bingostates.json').map(function(state, index) {
 //   })
 // })
 cbs.forEach(function(cb) {
-  // cb.key('up', function(ch, key) {
-  //   navigate('up')
-  // })
-  // cb.key('down', function(ch, key) {
-  //   navigate('down')
-  // })
+    ['up','down','left','right'].forEach(function(dir) {
+        cb.key(dir, function(ch, key) { navigate(dir) })
+    })
   bingoboard.append(cb)
 })
-// var cbc = 0
-// var cb  = cbs[0]
+var cbc = 0
+var cb  = cbs[0]
 
 // Append our box to the screen.
 box.append(bingoboard)
 screen.append(box);
 
-// function navigate(direction) {
-//   var newcbc = function(dir) {
-//     if (dir == 'up' && cbc > 0) return cbc-1
-//     if (dir == 'down' && cbc < cbs.length-1) return cbc+1
-//     return cbc
-//   }
-//
-//   cbs.forEach(function(cb, index) {
-//     cb.style.fg = undefined
-//     if (index == newcbc(direction)) {
-//       cb.style.fg = 'blue'
-//       cb.focus()
-//     }
-//   })
-//   cbc = newcbc(direction)
-//   screen.render()
-// }
+function navigate(direction) {
+  var newcbc = function(dir) {
+    if (dir == 'up'    && cbc > 0) return cbc-1
+    if (dir == 'left'  && cbc >= 3) return cbc-3
+    if (dir == 'down'  && cbc < cbs.length-1) return cbc+1
+    if (dir == 'right' && cbc < cbs.length-3) return cbc+3
+    return cbc
+  }
+
+  cbs.forEach(function(cb, index) {
+    cb.style.bg = 'blue'
+    if (index == newcbc(direction)) {
+      cb.style.bg = 'red'
+      cb.focus()
+    }
+  })
+  cbc = newcbc(direction)
+  screen.render()
+}
 
 // Quit on Escape, q, or Control-C.
 screen.key(['escape', 'q', 'C-c'], function(ch, key) {
@@ -112,7 +111,7 @@ screen.key(['escape', 'q', 'C-c'], function(ch, key) {
 });
 
 // Focus our element.
-// cb.focus();
+cb.focus();
 
 // Render the screen.
 screen.render();
