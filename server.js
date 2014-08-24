@@ -22,11 +22,11 @@ Server.prototype.copy_solution = function(file, cb) {
 		fs.writeFile(self.basepath + '/static/solution_tmp.js', solution, cb);
 	});
 };
-	
+
 Server.prototype.bundleFiles = function() {
 	var self = this;
 	var inject_js = browserify([self.bundlePath], {});
-	console.log('bundling react and solution');
+	process.stdout.write('Bundling bundle...');
 	inject_js.bundle(function(error, js) {
 		if (error) {
 			console.log(error);
@@ -35,10 +35,10 @@ Server.prototype.bundleFiles = function() {
 			if (error) {
 				console.log(error);
 			}
-			console.log('bundle written to static/tmp.js');
+			console.log('done!');
 			if (!self.server_is_running) {
 				self.fireUpServer();
-				
+
 			}
 
 		});
@@ -54,17 +54,15 @@ Server.prototype.fireUpServer = function() {
 				resp.writeHead(200, {'Content-type':'application/javascript; charset=utf-8'});
 				resp.end(js);
 			});
-		} else if (req.url.indexOf('favicon') > 0) {
-			console.log('Ain\'t gonna give you no favicon');
 		} else {
 			fs.readFile(self.basepath + '/static/index.html', {encoding: 'utf-8'}, function(error, html) {
 				resp.writeHead(200, {'Content-type':'text/html; charset=utf-8'});
 				resp.end(html);
 			});
-			
+
 		}
 	});
-	console.log('now listening to port ' + self.port);
+	console.log('Point your browser to http://localhost:' + self.port);
 	server.listen(self.port);
 	self.server_is_running = true;
 };
