@@ -11,16 +11,13 @@ var box = blessed.box({
   height: '100%'
 });
 
+// Create a bingoboard
 var bingoboard = blessed.box({
   top: 8,
   left: 'center',
   width: '80%',
   height: '60%',
   tags: true,
-  // border: {
-  //   type: 'line',
-  //   fg  : '#EF7702'
-  // },
   style: {
     fg: 'white',
   }
@@ -45,6 +42,7 @@ box.prepend(new blessed.Text({
     }
 }));
 
+// Append states
 var gridpos = 0
 var cbs = require('./bingostates.json').map(function(state, index) {
     if (index > 0 && (index % 3) == 0) gridpos += 1
@@ -62,16 +60,7 @@ var cbs = require('./bingostates.json').map(function(state, index) {
     return statebox
 })
 
-// process.exit(0)
-
-//   return blessed.checkbox({
-//     left   : state.left,
-//     top    : state.top,
-//     width  : 15,
-//     height : 3,
-//     text   : state.state
-//   })
-// })
+// Initialize
 cbs.forEach(function(cb) {
     ['up','down','left','right'].forEach(function(dir) {
         cb.key(dir, function(ch, key) { navigate(dir) })
@@ -81,10 +70,7 @@ cbs.forEach(function(cb) {
 var cbc = 0
 var cb  = cbs[0]
 
-// Append our box to the screen.
-box.append(bingoboard)
-screen.append(box);
-
+// Navigation
 function navigate(direction) {
   var newcbc = function(dir) {
     if (dir == 'up'    && cbc > 0) return cbc-1
@@ -104,6 +90,10 @@ function navigate(direction) {
   cbc = newcbc(direction)
   screen.render()
 }
+
+// Append our box to the screen.
+box.append(bingoboard)
+screen.append(box);
 
 // Quit on Escape, q, or Control-C.
 screen.key(['escape', 'q', 'C-c'], function(ch, key) {
