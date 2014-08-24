@@ -4,42 +4,23 @@ var blessed = require('blessed');
 var screen = blessed.screen();
 
 // Create a box perfectly centered horizontally and vertically.
-var box = blessed.form({
+var box = blessed.box({
   top: 'center',
   left: 'center',
-  width: '90%',
-  height: '90%',
-  tags: true,
-  border: {
-    type: 'line'
-  },
-  style: {
-    fg: 'blue',
-    border: {
-      fg: '#f0f0f0'
-    },
-    hover: {
-      bg: 'green'
-    }
-  }
+  width: '100%',
+  height: '100%'
 });
-
-box.prepend(new blessed.Text({
-  left: 2,
-  content: 'State bingo'
-}));
-
 
 var bingoboard = blessed.box({
   top: 8,
   left: 'center',
-  width: '30%',
+  width: '80%',
   height: '60%',
   tags: true,
-  border: {
-    type: 'line',
-    fg  : '#EF7702'
-  },
+  // border: {
+  //   type: 'line',
+  //   fg  : '#EF7702'
+  // },
   style: {
     fg: 'white',
   }
@@ -56,28 +37,29 @@ var bingologo = "\
 
 box.prepend(new blessed.Text({
     left : 'center',
-    top  : 1,
     width : 49,
+    top   : 1,
     content: bingologo,
     style: {
       fg: 'red',
     }
 }));
 
+var gridpos = 0
 var cbs = require('./bingostates.json').map(function(state, index) {
+    if (index > 0 && (index % 3) == 0) gridpos += 1
+    console.log((index % 3)*30, gridpos*30)
     return blessed.box({
-        top     : state.top,
-        left    : state.left,
-        width   : '30%',
-        height  : '30%',
-        padding : {
-          left : '5%'    
-        },
+        top     : ((index % 3) * 30) + 5 +'%',
+        left    : (gridpos * 30) + 5 +'%',
+        width   : '25%',
+        height  : '25%',
         content : state.state,
         style: {
             bg: 'blue',
         }
     })
+    return statebox
 })
 
 // process.exit(0)
