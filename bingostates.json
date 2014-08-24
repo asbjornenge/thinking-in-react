@@ -5,28 +5,28 @@
     "real"  : true
   },
   {
-    "state" : "state2"
+    "state" : "# of products"
   },
   {
-    "state" : "state3"
+    "state" : "In stock"
   },
   {
-    "state" : "state4"
+    "state" : "Price"
   },
   {
     "state" : "Checkbox value",
     "real"  : true
   },
   {
-    "state" : "state6"
+    "state" : "Scroll"
   },
   {
-    "state" : "state7"
+    "state" : "Categories"
   },
   {
-    "state" : "state8"
+    "state" : "Mouse position"
   },
   {
-    "state" : "state9"
+    "state" : "log(products)"
   }
 ]

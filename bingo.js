@@ -107,8 +107,8 @@ var cbs = require('./bingostates.json').map(function(state, index) {
     })
     statebox.real = state.real
     statebox.prepend(new blessed.Text({
-        top  : 'center',
-        left : 'center',
+        top   : 'center',
+        left  : 'center',
         content: state.state
     }))
     return statebox
