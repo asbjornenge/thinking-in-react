@@ -3,7 +3,7 @@ var blessed = require('blessed');
 // Create a screen object.
 var screen = blessed.screen();
 
-// Create a box perfectly centered horizontally and vertically.
+// MAIN - Create a box perfectly centered horizontally and vertically.
 var box = blessed.box({
   top: 'center',
   left: 'center',
@@ -11,7 +11,7 @@ var box = blessed.box({
   height: '100%'
 });
 
-// Create a bingoboard
+// BINGOBOARD
 var bingoboard = blessed.box({
   top: 10,
   left: 'center',
@@ -24,22 +24,65 @@ var bingoboard = blessed.box({
 });
 
 var bingologo = "\
-██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗ \
-██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║ \
-██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║ \
-██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝ \
-██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗ \
-╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝ \
+███████ ████████╗ █████╗ ████████╗███████╗    ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗ \
+██╔════╝╚══██╔══╝██╔══██╗╚══██╔══╝██╔════╝    ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║ \
+███████╗   ██║   ███████║   ██║   █████╗█████╗██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║ \
+╚════██║   ██║   ██╔══██║   ██║   ██╔══╝╚════╝██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝ \
+███████║   ██║   ██║  ██║   ██║   ███████╗    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗ \
+╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚══════╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝ \
 "
 
 box.prepend(new blessed.Text({
-    left : 'center',
-    width : 49,
-    top   : 1,
-    content: bingologo,
-    style: {
-      fg: 'red',
+    top      : 1,
+    left    : 'center',
+    width   : 95,
+    content : bingologo,
+    style   : {
+      fg : 'red',
     }
+}));
+
+box.prepend(new blessed.Text({
+    top     : 8,
+    left    : 'center',
+    content : "Welcome to State-Bingo. Let's play!",
+    style   : {
+      fg : 'green',
+    }
+}));
+
+// INFO
+
+// Create a bingoboard
+var infobox = blessed.box({
+  bottom : 0,
+  left   : 'center',
+  width  : '100%',
+  height : '15%',
+  style  : {
+    fg : 'white',
+  }
+});
+
+infobox.append(new blessed.Text({
+    top     : 1,
+    left    : 'center',
+    content : 'Navigate using arrow keys - up, down, left, right',
+    style   : { fg : 'blue' }
+}));
+
+infobox.append(new blessed.Text({
+    top     : 2,
+    left    : 'center',
+    content : 'Space to select a state',
+    style   : { fg : 'magenta' }
+}));
+
+infobox.append(new blessed.Text({
+    top     : 3,
+    left    : 'center',
+    content : 'Enter to evaluate',
+    style   : { fg : 'green' }
 }));
 
 // Append states
@@ -47,14 +90,19 @@ var gridpos = 0
 var cbs = require('./bingostates.json').map(function(state, index) {
     if (index > 0 && (index % 3) == 0) gridpos += 1
     // console.log((index % 3)*30, gridpos*30)
-    var bgcolor  = index == 0 ? 'red' : 'blue'
+    var bordercolor = index == 0 ? 'red' : 'blue'
     var statebox =  blessed.box({
         top     : ((index % 3) * 30) + 5 +'%',
         left    : (gridpos * 30) + 5 +'%',
         width   : '25%',
         height  : '25%',
-        style: {
-            bg: bgcolor,
+        border : {
+            type : 'line'
+        },
+        style : {
+            border : {
+                fg : 'blue'
+            }
         }
     })
     statebox.prepend(new blessed.Text({
@@ -94,12 +142,13 @@ function navigate(direction) {
   }
 
   cbs.forEach(function(cb, index) {
-    cb.style.bg = 'blue'
+    cb.style.border.fg = 'blue'
+    cb.children[0].style.fg = 'white'
     if (cb.selected) {
-        cb.style.bg = '#EF7702'
+        cb.children[0].style.fg = '#EF7702'
     }
     if (index == newcbc(direction)) {
-      cb.style.bg = cb.selected ? 'magenta' : 'red'
+      cb.style.border.fg = '#EF7702'
       cb.focus()
     }
   })
@@ -116,6 +165,7 @@ function finish() {
 
 // Append our box to the screen.
 box.append(bingoboard)
+box.append(infobox)
 screen.append(box);
 
 // Quit on Escape, q, or Control-C.
@@ -124,7 +174,7 @@ screen.key(['escape', 'q', 'C-c'], function(ch, key) {
 });
 
 // Focus our element.
-cb.focus();
+navigate('up')
 
 // Render the screen.
 screen.render();
