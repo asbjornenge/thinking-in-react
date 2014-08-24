@@ -13,7 +13,7 @@ var box = blessed.box({
 
 // Create a bingoboard
 var bingoboard = blessed.box({
-  top: 8,
+  top: 10,
   left: 'center',
   width: '80%',
   height: '60%',
@@ -46,17 +46,22 @@ box.prepend(new blessed.Text({
 var gridpos = 0
 var cbs = require('./bingostates.json').map(function(state, index) {
     if (index > 0 && (index % 3) == 0) gridpos += 1
-    console.log((index % 3)*30, gridpos*30)
-    return blessed.box({
+    // console.log((index % 3)*30, gridpos*30)
+    var bgcolor  = index == 0 ? 'red' : 'blue'
+    var statebox =  blessed.box({
         top     : ((index % 3) * 30) + 5 +'%',
         left    : (gridpos * 30) + 5 +'%',
         width   : '25%',
         height  : '25%',
-        content : state.state,
         style: {
-            bg: 'blue',
+            bg: bgcolor,
         }
     })
+    statebox.prepend(new blessed.Text({
+        top  : 'center',
+        left : 'center',
+        content: state.state
+    }))
     return statebox
 })
 
@@ -64,6 +69,14 @@ var cbs = require('./bingostates.json').map(function(state, index) {
 cbs.forEach(function(cb) {
     ['up','down','left','right'].forEach(function(dir) {
         cb.key(dir, function(ch, key) { navigate(dir) })
+    })
+    cb.key('space', function(ch, key) {
+        if (cb.selected) cb.selected = false
+        else cb.selected = true
+        navigate('select')
+    })
+    cb.key('enter', function(ch, key) {
+        finish()
     })
   bingoboard.append(cb)
 })
@@ -82,13 +95,23 @@ function navigate(direction) {
 
   cbs.forEach(function(cb, index) {
     cb.style.bg = 'blue'
+    if (cb.selected) {
+        cb.style.bg = '#EF7702'
+    }
     if (index == newcbc(direction)) {
-      cb.style.bg = 'red'
+      cb.style.bg = cb.selected ? 'magenta' : 'red'
       cb.focus()
     }
   })
   cbc = newcbc(direction)
   screen.render()
+}
+
+// Evaluate score
+function finish() {
+    cbs.forEach(function (cb) {
+        console.log(cb.selected, cb.children[0].content)
+    })
 }
 
 // Append our box to the screen.
