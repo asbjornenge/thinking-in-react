@@ -67,21 +67,21 @@ var infobox = blessed.box({
 infobox.append(new blessed.Text({
     top     : 1,
     left    : 'center',
-    content : 'Navigate using arrow keys - up, down, left, right',
+    content : 'Navigate using arrow keys - UP, DOWN, LEFT, RIGHT',
     style   : { fg : 'yellow' }
 }));
 
 infobox.append(new blessed.Text({
     top     : 2,
     left    : 'center',
-    content : 'Space to select a state',
+    content : 'SPACE to select a state',
     style   : { fg : 'magenta' }
 }));
 
 infobox.append(new blessed.Text({
     top     : 3,
     left    : 'center',
-    content : 'Enter to evaluate',
+    content : 'ENTER to evaluate',
     style   : { fg : 'green' }
 }));
 
@@ -178,7 +178,7 @@ function finish() {
     var evalText = new blessed.Text({
         top     : 'center',
         left    : 'center',
-        content : 'That is '+ (correct ? 'correct!' : 'incorrect :-('),
+        content : correct ? 'CORRECT!!' : 'That is incorrect :-(',
         style   : { fg : correct ? 'green' : 'red' }
     });
     evalInfo.append(evalText)
