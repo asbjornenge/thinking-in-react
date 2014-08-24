@@ -105,6 +105,7 @@ var cbs = require('./bingostates.json').map(function(state, index) {
             }
         }
     })
+    statebox.real = state.real
     statebox.prepend(new blessed.Text({
         top  : 'center',
         left : 'center',
@@ -162,12 +163,13 @@ var evaluating = false
 // Evaluate score
 function finish() {
     if (evaluating) return
-    evaluating = true
-    var selected = cbs.reduce(function (previous, current, index, array) {
-        if (current.selected) previous.push(current)
-        return previous
-    }, [])
-    var correct = selected.length == 2
+    evaluating  = true
+    var correct = true
+    cbs.forEach(function (cb) {
+        var selected = cb.selected != undefined ? cb.selected : false
+        var real     = cb.real != undefined ? cb.real : false
+        if (selected != real) correct = false
+    })
     evalInfo = new blessed.box({
         width : '100%',
         height : '100%'
