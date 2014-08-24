@@ -68,7 +68,7 @@ infobox.append(new blessed.Text({
     top     : 1,
     left    : 'center',
     content : 'Navigate using arrow keys - up, down, left, right',
-    style   : { fg : 'blue' }
+    style   : { fg : 'yellow' }
 }));
 
 infobox.append(new blessed.Text({
@@ -128,8 +128,9 @@ cbs.forEach(function(cb) {
     })
   bingoboard.append(cb)
 })
-var cbc = 0
-var cb  = cbs[0]
+var cbc      = 0
+var cb       = cbs[0]
+var evalInfo = null
 
 // Navigation
 function navigate(direction) {
@@ -156,11 +157,42 @@ function navigate(direction) {
   screen.render()
 }
 
+var evaluating = false
+
 // Evaluate score
 function finish() {
-    cbs.forEach(function (cb) {
-        console.log(cb.selected, cb.children[0].content)
-    })
+    if (evaluating) return
+    evaluating = true
+    var selected = cbs.reduce(function (previous, current, index, array) {
+        if (current.selected) previous.push(current)
+        return previous
+    }, [])
+    var correct = selected.length == 2
+    evalInfo = new blessed.box({
+        width : '100%',
+        height : '100%'
+    });
+    infobox.append(evalInfo)
+    var evalText = new blessed.Text({
+        top     : 'center',
+        left    : 'center',
+        content : 'That is '+ (correct ? 'correct!' : 'incorrect :-('),
+        style   : { fg : correct ? 'green' : 'red' }
+    });
+    evalInfo.append(evalText)
+    var colors = ['red','green','blue','magenta','yellow']
+    var colorInterval = setInterval(function () {
+        if (correct) evalText.style.fg = colors[Math.floor(Math.random() * 6)]
+        else evalText.content = evalText.content + '('
+        screen.render()
+    },20)
+    setTimeout(function () {
+        if (colorInterval) clearInterval(colorInterval)
+        infobox.remove(evalInfo)
+        evaluating = false;
+        screen.render()
+    },1000)
+    screen.render()
 }
 
 // Append our box to the screen.

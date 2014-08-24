@@ -1,48 +1,32 @@
 
 [
   {
-    "state" : "state1",
-    "top"   : "0%",
-    "left"  : "0%"
+    "state" : "Search text",
+    "real"  : true
   },
   {
-    "state" : "state2",
-    "top"   : "0%",
-    "left"  : "30%"
+    "state" : "state2"
   },
   {
-    "state" : "state3",
-    "top"   : "0%",
-    "left"  : "60%"
+    "state" : "state3"
   },
   {
-    "state" : "state4",
-    "top"   : "50%",
-    "left"  : "10%"
+    "state" : "state4"
   },
   {
-    "state" : "state5",
-    "top"   : "50%",
-    "left"  : "20%"
+    "state" : "Checkbox value",
+    "real"  : true
   },
   {
-    "state" : "state6",
-    "top"   : "50%",
-    "left"  : "30%"
+    "state" : "state6"
   },
   {
-    "state" : "state7",
-    "top"   : "50%",
-    "left"  : "10%"
+    "state" : "state7"
   },
   {
-    "state" : "state8",
-    "top"   : "50%",
-    "left"  : "20%"
+    "state" : "state8"
   },
   {
-    "state" : "state9",
-    "top"   : "50%",
-    "left"  : "30%"
+    "state" : "state9"
   }
 ]
