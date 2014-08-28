@@ -1,12 +1,25 @@
 var exercise    = function() {
         return(
             {
-                intro   : "In this exercise, you will...",
+                intro   : "Press {blue-fg}[ENTER]{/blue-fg} to start",
                 steps   :
                     [
                         {
+                            title       : "Target layout",
+                            description : "1) This layout forms the basis for our component structure. In the next steps we will follow the logical component breakdown.",
+                            treePrepend : [],
+                            size        : {
+                                width   : 36,
+                                height  : 13
+                            },
+                            placement   : {
+                                left    : 4,
+                                top     : 4
+                            }
+                        },
+                        {
                             title       : "FilterableProductTable",
-                            description : "1) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            description : "2) This is the outmost component, and contains everything.",
                             treePrepend : [
                                 " ",
                                 "  "
@@ -22,7 +35,7 @@ var exercise    = function() {
                         },
                         {
                             title       : "SearchBar",
-                            description : "2) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            description : "3) This component will be used for the search bar.",
                             treePrepend : [
                                 "  |---",
                                 "  "
@@ -38,7 +51,7 @@ var exercise    = function() {
                         },
                         {
                             title       : "ProductTable",
-                            description : "3) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            description : "4) This component will contain the table.",
                             treePrepend : [
                                 "  |---",
                                 "  "
@@ -54,7 +67,7 @@ var exercise    = function() {
                         },
                         {
                             title       : "ProductCategoryRow",
-                            description : "4) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            description : "5) This component will be used for each product category row.",
                             treePrepend : [
                                 "       |---",
                                 "       "
@@ -70,7 +83,7 @@ var exercise    = function() {
                         },
                         {
                             title       : "ProductRow",
-                            description : "5) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            description : "6) This component will be used for each product row. That's it!",
                             treePrepend : [
                                 "       |---",
                                 "       "

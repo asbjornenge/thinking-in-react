@@ -64,6 +64,7 @@ var blessed     = require("blessed"),
     }),
     component   = [],
     spacer      = "                                        ";
+    _spacer     = "       "
     navigate    = function(direction) {
         var render  = function() {
                 var i;
@@ -77,7 +78,11 @@ var blessed     = require("blessed"),
                     if (i < progress) {
                         component[i].style.border.fg = "blue";
                     } else {
-                        component[i].style.border.fg = "yellow";
+                        if (progress === 0) {
+                            component[i].style.border.fg = "white";
+                        } else {
+                            component[i].style.border.fg = "yellow";
+                        }
                     }
                     component[i].prepend(new blessed.Text({
                         left    : 2,
@@ -87,37 +92,157 @@ var blessed     = require("blessed"),
                     box.append(
                         component[i]
                     );
-                    box.setLine(
-                        (i*2)+1,
-                        spacer+exercise().steps[i].treePrepend[1]+"|"
-                    );
-                    box.setLine(
-                        (i*2)+2,
-                        spacer+exercise().steps[i].treePrepend[0]+exercise().steps[i].title
-                    );
+                    if (progress > 0) {
+                        box.setLine(
+                            (i*2)-1,
+                            spacer+exercise().steps[i].treePrepend[1]+"|"
+                        );
+                    }
+                    if (progress > 0) {
+                        box.setLine(
+                            (i*2),
+                            spacer+exercise().steps[i].treePrepend[0]+exercise().steps[i].title
+                        );
+                    }
                     box.setLine(
                         16,
                         exercise().steps[i].description
                     );
+                    if (progress === 0) {
+                        box.append(new blessed.Text({
+                            left    : 6,
+                            top     : 5,
+                            content : " Search...                      ",
+                            fg      : "black",
+                            bg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 7,
+                            content : " Sporting Goods",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 8,
+                            content : " Football      $49.99",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 9,
+                            content : " Baseball      $9.99",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 10,
+                            content : " Basketball    $29.99",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 12,
+                            content : " Electronics",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 13,
+                            content : " iPod Touch    $99.99",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 14,
+                            content : " iPhone 5      $399.99",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 15,
+                            content : " Nexus 7       $199.99",
+                            fg      : "white"
+                        }));
+                    } else if (progress === 2 || progress === 3) {
+                        box.append(new blessed.Text({
+                            left    : 6,
+                            top     : 6,
+                            content : " Search...                      ",
+                            fg      : "black",
+                            bg      : "white"
+                        }));
+                    } else if (progress === 4) {
+                        box.append(new blessed.Text({
+                            left    : 6,
+                            top     : 6,
+                            content : " Search...                      ",
+                            fg      : "black",
+                            bg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 10,
+                            content : " Sporting Goods",
+                            fg      : "white"
+                        }));
+                    } else if (progress === 5) {
+                        box.append(new blessed.Text({
+                            left    : 6,
+                            top     : 6,
+                            content : " Search...                      ",
+                            fg      : "black",
+                            bg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 10,
+                            content : " Sporting Goods",
+                            fg      : "white"
+                        }));
+                        box.append(new blessed.Text({
+                            left    : 7,
+                            top     : 13,
+                            content : " Football      $49.99",
+                            fg      : "white"
+                        }));
+                    }
                 }
                 box.setLine(
                     0,
-                    "GUI representation:                      Component tree:"
+                    (progress > 0) ?
+                            "GUI representation:                      Component tree:"
+                        :
+                            "GUI representation:                                     "
                 );
                 box.setLine(
                     1,
                     ""
                 );
-                progressed.width = 14*(progress+1);
-                percentage.content = 20*(progress+1)+"%";
+                progressed.width = (progress > 0) ?
+                        14*(progress)
+                    :
+                        1;
+                progressed.style = (progress > 0) ?
+                        {
+                            bg  : "yellow"
+                        }
+                    :
+                        {
+                            bg  : "blue"
+                        };
+                percentage.content = 20*(progress)+"%";
                 navBar.content = (progress === -1 || progress === 0) ?
                         "{yellow-fg}                                            {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
                     :
-                        "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}               {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
+                        (progress !== 5) ?
+                                "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}               {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
+                            :
+                                "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}                  {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} FINISH >{/yellow-fg}"
                 if (progress !== -1) {
                     box.append(progBar);
                 }
-                box.append(progressed);
+                box.append(progressed)
                 box.append(percentage);
                 box.append(navBar);
                 screen.render();
@@ -183,6 +308,13 @@ box.key("up", function(
     }
 );
 box.key("down", function(
+        ch,
+        key
+    ) {
+        navigate("next")
+    }
+);
+box.key("enter", function(
         ch,
         key
     ) {
