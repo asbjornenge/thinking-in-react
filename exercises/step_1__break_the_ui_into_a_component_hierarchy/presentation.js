@@ -235,12 +235,12 @@ module.exports = function (callback) {
                             };
                     percentage.content = 20*(progress)+"%";
                     navBar.content = (progress === -1 || progress === 0) ?
-                            "{yellow-fg}                                            {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
+                            "{yellow-fg}                                                   {blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
                         :
                             (progress !== 5) ?
-                                    "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}               {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
+                                    "  {yellow-fg}< PREVIOUS STEP {blue-fg}[LEFT]{/blue-fg}                           {blue-fg}[RIGHT]{/blue-fg} NEXT STEP >{/yellow-fg}"
                                 :
-                                    "  {yellow-fg}< PREVIOUS STEP {blue-fg}[UP]{/blue-fg}/{blue-fg}[LEFT]{/blue-fg}                  {blue-fg}[DOWN]{/blue-fg}/{blue-fg}[RIGHT]{/blue-fg} FINISH >{/yellow-fg}"
+                                    "  {yellow-fg}< PREVIOUS STEP {blue-fg}[LEFT]{/blue-fg}                              {blue-fg}[ENTER]{/blue-fg} FINISH >{/yellow-fg}"
                     if (progress !== -1) {
                         box.append(progBar);
                     }
@@ -258,6 +258,41 @@ module.exports = function (callback) {
                 render()
             } else if (direction === "prev" && progress === -1) {
                 box.setContent(exercise().intro);
+                screen.render();
+            } else if (direction === "next" && progress < exercise().steps.length) {
+                // Finishing
+                var blanker = blessed.box({
+                    width  : '100%',
+                    height : '100%',
+                    style  : {
+                        fg : 'black'
+                    }
+                })
+                blanker.append(new blessed.Text({
+                    top     : 10,
+                    left    : 'center',
+                    content : 'You have successfully completede step 1'
+                }))
+                var blinker = new blessed.Text({
+                    top     : 11,
+                    left    : 'center',
+                    content : 'CONGRATULATIONS!',
+                    style   : {
+                        fg : 'green'
+                    }
+                })
+                blanker.append(blinker)
+
+                var colors = ['red','green','blue','magenta','yellow']
+                var colorInterval = setInterval(function () {
+                    blinker.style.fg = colors[Math.floor(Math.random() * 6)]
+                    screen.render()
+                },20)
+                setTimeout(function () {
+                    box.hide(); blanker.hide(); screen.render(); callback(true);
+                    screen.render()
+                },2000)
+                screen.append(blanker)
                 screen.render();
             }
         };
@@ -292,47 +327,21 @@ module.exports = function (callback) {
             ch,
             key
         ) {
-            navigate("prev")
+            if (progress > 0) navigate("prev")
         }
     );
     box.key("right", function(
             ch,
             key
         ) {
-            if (progress === 5) {
-                callback(true)
-            } else {
-                navigate("next")
-            }
-        }
-    );
-    box.key("up", function(
-            ch,
-            key
-        ) {
-            navigate("prev")
-        }
-    );
-    box.key("down", function(
-            ch,
-            key
-        ) {
-            if (progress === 5) {
-                callback(true)
-            } else {
-                navigate("next")
-            }
+            if (progress >= 0 && progress < 5) navigate("next")
         }
     );
     box.key("enter", function(
             ch,
             key
         ) {
-            if (progress === 5) {
-                callback(true)
-            } else {
-                navigate("next")
-            }
+            if (progress == -1 || progress == 5) navigate("next")
         }
     );
     screen.key(
