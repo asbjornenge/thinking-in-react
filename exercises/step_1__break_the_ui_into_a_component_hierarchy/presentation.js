@@ -299,7 +299,11 @@ module.exports = function (callback) {
             ch,
             key
         ) {
-            navigate("next")
+            if (progress === 5) {
+                callback(true)
+            } else {
+                navigate("next")
+            }
         }
     );
     box.key("up", function(
@@ -313,14 +317,22 @@ module.exports = function (callback) {
             ch,
             key
         ) {
-            navigate("next")
+            if (progress === 5) {
+                callback(true)
+            } else {
+                navigate("next")
+            }
         }
     );
     box.key("enter", function(
             ch,
             key
         ) {
-            navigate("next")
+            if (progress === 5) {
+                callback(true)
+            } else {
+                navigate("next")
+            }
         }
     );
     screen.key(
