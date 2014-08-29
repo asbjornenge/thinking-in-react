@@ -7,7 +7,7 @@ It will hopefully help you get started with React and help you to get a good wor
 ## Install
 
 	$ npm install -g thinking-in-react
-	
+
 ## Usage
 
 Just run
@@ -15,3 +15,12 @@ Just run
 	$ thinking-in-react
 
 to play.
+
+## Changelog
+
+### v0.1.0
+
+* Introduced blessed UI guide for step 1
+* Improved HINTs to better guide participants
+* Introduced state bingo!
+* Introduced ```thinking-in-react server sol.js``` to test your solution in the browser!
