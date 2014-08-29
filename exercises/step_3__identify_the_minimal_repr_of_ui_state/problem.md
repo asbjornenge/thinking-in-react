@@ -14,12 +14,8 @@ Go through each piece of data in our application and figure out which one is sta
 
 In this exercise we will play State Bingo! Let the games begin...
 
-# HINT(s)
-
-Workshopper requires us to pass an input file to start the exercise. Just pass *whatever* (the exercise won't even verify it's existence).
-
 ```sh
-$ {appname} verify whatever
+$ {appname} verify statebingo
 ```
 
 Pressing `ESC` will return you to your terminal at any point.
