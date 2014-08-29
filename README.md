@@ -21,6 +21,6 @@ to play.
 ### v0.1.0
 
 * Introduced blessed UI guide for step 1
-* Improved HINTs to better guide participants
+* Improved HINTs
 * Introduced state bingo!
 * Introduced ```thinking-in-react server``` to test your solution in the browser!
