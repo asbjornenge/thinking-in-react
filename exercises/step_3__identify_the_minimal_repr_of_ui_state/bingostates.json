@@ -1,0 +1,32 @@
+
+[
+  {
+    "state" : "Search text",
+    "real"  : true
+  },
+  {
+    "state" : "# of products"
+  },
+  {
+    "state" : "In stock"
+  },
+  {
+    "state" : "Price"
+  },
+  {
+    "state" : "Checkbox value",
+    "real"  : true
+  },
+  {
+    "state" : "Scroll"
+  },
+  {
+    "state" : "Categories"
+  },
+  {
+    "state" : "Mouse position"
+  },
+  {
+    "state" : "log(5)"
+  }
+]

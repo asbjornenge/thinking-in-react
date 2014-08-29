@@ -13,7 +13,7 @@ For each piece of state in your application:
 
 # Exercise
 
-Identify the proper location for our two `states`; `filterText` and `inStockOnly` and add them.
+Identify the proper location for our two `states`; `filterText` and `inStockOnly` and add them using `getInitialState` on the appropriate component.
 
 # Hint(s)
 

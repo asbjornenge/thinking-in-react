@@ -22,12 +22,14 @@
   },
   "homepage": "https://github.com/asbjornenge/thinking-in-react",
   "dependencies": {
+    "blessed": "0.0.37",
+    "browserify": "~5.9.3",
     "chalk": "^0.4.0",
     "concat-stream": "^1.4.5",
     "envify": "^1.2.1",
     "jsdom": "^0.10.5",
     "mocha": "^1.19.0",
-    "react": "^0.10.0",
+    "react": "^0.11.1",
     "workshopper": "git://github.com/rvagg/workshopper.git#cef8219ca2919964113c6daedd78a5db8404051b",
     "workshopper-exercise": "^0.2.3",
     "workshopper-wrappedexec": "^0.1.1"
