@@ -30,31 +30,10 @@ The first thing you'll want to do is to draw boxes around every component (and s
 
 # Exercise
 
-Output each component to the console. Use TWO spaces to indicate child components:
-
-```js
-console.log('FirstComponent')
-console.log('  Child')
-console.log('  AnotherChild')
-console.log('    ChildOfChild')
-```
-
-# HINT(s)
-
-Run your solution:
+This first step is more of a guide than en exercise. Start by running the following command:
 
 ```sh
-$ {appname} run solution_1.js
+$ {appname} verify components
 ```
 
-When you are done, verify:
-
-```sh
-$ {appname} verify solution_1.js
-```
-
-To view in browser:
-```sh
-$ {appname} server solution_1.js
-```
-and it'll be available (hopefully) on http://localhost:3333
+Pressing `ESC` will return you to your terminal at any point.

@@ -43,3 +43,23 @@ So that I can verify your solution you need to export it.
 ```js
 module.exports.FilterableProductTable = FilterableProductTable
 ```
+
+# GENERAL HINT(s)
+
+Run your solution:
+
+```sh
+$ {appname} run solution_1.js
+```
+
+When you are done, verify:
+
+```sh
+$ {appname} verify solution_1.js
+```
+
+To view in browser:
+```sh
+$ {appname} server solution_1.js
+```
+and it'll be available (hopefully) on ```http://localhost:3333```
