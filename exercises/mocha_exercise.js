@@ -27,8 +27,8 @@ exercise.addSetup(function (mode, callback) {
 
     // Semi-global common test requirements
     assert         = require('assert')
-    React          = require(process.env.PWD+'/node_modules/react')
-    ReactAddons    = require(process.env.PWD+'/node_modules/react/addons')
+    React          = require(process.cwd()+'/node_modules/react')
+    ReactAddons    = require(process.cwd()+'/node_modules/react/addons')
     ReactTestUtils = React.addons.TestUtils
     products       = require('./products.json')
 
