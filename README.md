@@ -18,6 +18,11 @@ to play.
 
 ## Changelog
 
+### v1.0.0
+
+* Using process.cwd() instead of process.env.PWD - improves Windows support
+* Also did a non-semver release to get to a proper semver starting point
+
 ### v0.1.0
 
 * Introduced blessed UI guide for step 1

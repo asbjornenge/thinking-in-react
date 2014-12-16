@@ -1,6 +1,6 @@
 {
   "name": "thinking-in-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Thinking in React workshopper",
   "bin": "./thinking-in-react.js",
   "scripts": {
