@@ -9,7 +9,7 @@ describe('Inverse dataflow', function() {
         var _comp = render(function() {
             ReactTestUtils.scryRenderedDOMComponentsWithTag(_comp, 'input').forEach(function(_input) {
                 var node = _input.getDOMNode()
-                if (node.type == 'text')     node.value   = 'test'
+                if (node.type !== 'checkbox')     node.value   = 'test'
                 if (node.type == 'checkbox') node.checked = true
                 ReactTestUtils.Simulate.change(_input)
             })
@@ -17,7 +17,7 @@ describe('Inverse dataflow', function() {
                 var _filterableProductTable = ReactTestUtils.findRenderedComponentWithType(_comp, Solution.FilterableProductTable)
                 assert(_filterableProductTable.state.filterText  == 'test')
                 assert(_filterableProductTable.state.inStockOnly == true)
-                done()                
+                done()
             })
         })
     })
