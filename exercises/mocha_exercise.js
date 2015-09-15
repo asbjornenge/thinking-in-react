@@ -8,34 +8,21 @@ var exercise      = require('workshopper-exercise')()
   , Mocha         = require('mocha')
 
 // checks that the submission file actually exists
-exercise = filecheck(exercise)
+var exercise = filecheck(exercise)
 
 // execute the solution and submission in parallel with spawn()
 exercise = execute(exercise)
 
 // Setup
 exercise.addSetup(function (mode, callback) {
-    global.document  = jsdom('<html><body></body></html>')
-    global.window    = document.createWindow()
+    global.document  = jsdom('<html><body><div id="react_workshop"></div></body></html>')
+    global.window    = document.parentWindow
     global.navigator = window.navigator
     global.Solution  = require(path.resolve(process.cwd(), process.argv[3]))
 
     if (typeof Solution != 'object') {
       this.emit('fail', 'Your solution does not export an object. HINT: Use module.exports.Component = Component to export your component.')
       return
-    }
-
-    // Semi-global common test requirements
-    assert         = require('assert')
-    React          = require(process.cwd()+'/node_modules/react')
-    ReactAddons    = require(process.cwd()+'/node_modules/react/addons')
-    ReactTestUtils = React.addons.TestUtils
-    products       = require('./products.json')
-
-    render = function(callback) {
-        return React.renderComponent(Solution.FilterableProductTable({products:products}), document.body, function() {
-            process.nextTick(callback)
-        })
     }
 
     var mocha = new Mocha()

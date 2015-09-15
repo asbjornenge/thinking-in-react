@@ -1,5 +1,6 @@
 var path = require('path');
 var browserify = require('browserify');
+var babelify = require('babelify');
 var fs = require('fs');
 var http = require('http');
 
@@ -25,7 +26,13 @@ Server.prototype.copy_solution = function(file, cb) {
 
 Server.prototype.bundleFiles = function() {
 	var self = this;
-	var inject_js = browserify([self.bundlePath], {});
+	var inject_js = browserify([self.bundlePath], {
+        cache: {},
+        transform: [babelify],
+        packageCache: {},
+        debug: true,
+        fullPaths: true,
+    });
 	process.stdout.write('Bundling bundle...');
 	inject_js.bundle(function(error, js) {
 		if (error) {
