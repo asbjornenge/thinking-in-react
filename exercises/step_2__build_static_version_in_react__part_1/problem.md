@@ -17,13 +17,14 @@ Simply refer to the React docs if you need help executing this step; `http://fac
 You are going to need reactjs for this exercise. Install it using npm.
 
 ```sh
-$ npm install react
+$ npm install react@0.14.0-rc1 react-dom@0.14.0-rc1
 ```
 
 If you are unfamiliar with the commonjs format, here is how you can import the react library into your solution.
 
 ```js
 var React = require('react')
+var ReactDOM = require('react-dom')
 ```
 
 Here is what a really basic React component looks like (JSX syntax is optional, I prefer not to use it).

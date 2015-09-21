@@ -1,11 +1,9 @@
-var React = require('react')
+import React from 'react';
 
-var FilterableProductTable = React.createClass({
-    render: function() {
+export const FilterableProductTable = React.createClass({
+    render() {
         return (
-            React.DOM.div({}, [])
+            <div></div>
         );
-    }
+    },
 });
-
-module.exports.FilterableProductTable = FilterableProductTable

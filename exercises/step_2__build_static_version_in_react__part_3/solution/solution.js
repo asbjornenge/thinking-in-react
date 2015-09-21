@@ -1,88 +1,95 @@
-var React = require('react')
+import React from 'react';
 
-var ProductCategoryRow = React.createClass({
-    render: function() {
+export const ProductCategoryRow = React.createClass({
+    render() {
         return (
-            React.DOM.tr({}, [
-                React.DOM.th({
-                    colSpan : 2
-                }, this.props.category)
-            ])
-        )
-    }
-});
-
-var ProductRow = React.createClass({
-    render: function() {
-        var name = this.props.product.stocked ?
-            this.props.product.name :
-            React.DOM.span({
-                style : { color : 'red' }
-            }, this.props.product.name)
-        return (
-            React.DOM.tr({}, [
-                React.DOM.td({}, name),
-                React.DOM.td({}, this.props.product.price)
-            ])
+            <tr>
+                <th colSpan={2}>{this.props.category}</th>
+            </tr>
         );
-    }
+    },
 });
 
-var ProductTable = React.createClass({
-    render: function() {
-        var rows = [];
-        var lastCategory = null;
-        this.props.products.forEach(function(product) {
-            if (product.category !== lastCategory) {
-                rows.push(ProductCategoryRow({ category : product.category, key : product.category }));
+export const ProductRow = React.createClass({
+    render() {
+        const product = this.props.product;
+
+        const style = {
+            color: product.stocked ? null : 'red',
+        };
+
+        return (
+            <tr>
+                <td style={style}>{product.name}</td>
+                <td>{product.price}</td>
+            </tr>
+        );
+    },
+});
+
+export const ProductTable = React.createClass({
+    render() {
+        const products = this.props.products;
+
+        const rows = [];
+        let currentCategory;
+
+        products.forEach((product) => {
+            if (product.category !== currentCategory) {
+                currentCategory = product.category;
+
+                rows.push((
+                    <ProductCategoryRow
+                        key={currentCategory}
+                        category={currentCategory}
+                    />
+                ));
             }
-            rows.push(ProductRow({product : product, key : product.name }));
-            lastCategory = product.category;
+
+            rows.push((
+                <ProductRow key={product.name} product={product}/>
+            ));
         });
+
         return (
-            React.DOM.table({},[
-                React.DOM.thead({}, [
-                    React.DOM.tr({}, [
-                        React.DOM.th({},'Name'),
-                        React.DOM.th({},'Price')
-                    ])
-                ]),
-                React.DOM.tbody({}, rows)
-            ])
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
         );
-    }
+    },
 });
 
-var SearchBar = React.createClass({
-    render: function() {
+export const SearchBar = React.createClass({
+    render() {
         return (
-            React.DOM.form({}, [
-                React.DOM.input({
-                    type        : 'text',
-                    placeholder : 'Search...'
-                }),
-                React.DOM.p({},[
-                    React.DOM.input({ type : 'checkbox' }),
-                    'Only show products in stock'
-                ])
-            ])
+            <form>
+                <input type="search" placeholder="Search..."/>
+                <label>
+                    <input type="checkbox"/>
+                    Only show products in stock
+                </label>
+            </form>
         );
-    }
+    },
 });
 
-var FilterableProductTable = React.createClass({
-    render: function() {
-        return (
-            React.DOM.div({}, [
-                SearchBar(),
-                ProductTable({ products : this.props.products })
-            ])
-        );
-    }
-});
+export const FilterableProductTable = React.createClass({
+    render() {
+        const products = this.props.products;
 
-module.exports.FilterableProductTable = FilterableProductTable
-module.exports.SearchBar              = SearchBar
-module.exports.ProductTable           = ProductTable
-module.exports.ProductRow             = ProductRow
-module.exports.ProductCategoryRow     = ProductCategoryRow
+        return (
+            <div>
+                <SearchBar/>
+                <ProductTable products={products}/>
+            </div>
+        );
+    },
+});

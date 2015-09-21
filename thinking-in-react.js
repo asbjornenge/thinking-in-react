@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const Workshopper = require('workshopper')
     , path        = require('path')
     , http = require('http')
@@ -21,5 +19,5 @@ if (process.argv[2] === 'server') {
 	//   // , prerequisitesFile : path.join(__dirname, 'prerequisites.txt')
 	//   // , creditsFile       : path.join(__dirname, 'credits.txt')
 	});
-	
+
 }

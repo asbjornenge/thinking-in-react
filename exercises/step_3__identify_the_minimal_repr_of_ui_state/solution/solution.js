@@ -1,1 +1,4 @@
-var minimal_state = [ "Search text", "Checkbox value" ]
+const minimalState = [
+    'Search text',
+    'Checkbox value',
+];
