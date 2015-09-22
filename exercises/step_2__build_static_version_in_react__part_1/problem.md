@@ -20,47 +20,40 @@ You are going to need reactjs for this exercise. Install it using npm.
 $ npm install react@0.14.0-rc1 react-dom@0.14.0-rc1
 ```
 
-If you are unfamiliar with the commonjs format, here is how you can import the react library into your solution.
+We are using ES2015 syntax in these exercises. Here is what a really basic React component looks like.
 
 ```js
-var React = require('react')
-var ReactDOM = require('react-dom')
-```
+import React from 'react'
 
-Here is what a really basic React component looks like (JSX syntax is optional, I prefer not to use it).
-
-```js
-var FilterableProductTable = React.createClass({
-    render: function() {
+export const FilterableProductTable = React.createClass({
+    render() {
         return (
-            React.DOM.div({}, [])
-        );
+            <div></div>
+        )
     }
-});
+})
 ```
 
-So that I can verify your solution you need to export it.
+You might notice we are using HTML in our javascript here. Whaaa? It's called JSX, and it's a central part of React. It let's you keep your markup together with your code.
 
-```js
-module.exports.FilterableProductTable = FilterableProductTable
-```
+Remember to `export` your components, so that I can verify your solution.
 
 # GENERAL HINT(s)
 
 Run your solution:
 
 ```sh
-$ {appname} run solution_1.js
+$ {appname} run solution.js
 ```
 
 When you are done, verify:
 
 ```sh
-$ {appname} verify solution_1.js
+$ {appname} verify solution.js
 ```
 
 To view in browser:
 ```sh
-$ {appname} server solution_1.js
+$ {appname} server solution.js
 ```
 and it'll be available (hopefully) on ```http://localhost:3333```
