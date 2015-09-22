@@ -1,5 +1,0 @@
-console.log('FilterableProductTable')
-console.log('  SearchBar')
-console.log('  ProductTable')
-console.log('    ProductCategoryRow')
-console.log('    ProductRow')

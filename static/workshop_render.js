@@ -1,9 +1,7 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var path = require('path');
-var prods = require('../exercises/products.json');
+var products = require('../exercises/products.json');
 var Solution  = require('./solution_tmp.js');
 
-
-
-
-React.renderComponent(Solution.FilterableProductTable({products:prods}), document.getElementById('react_workshop'));
+ReactDOM.render(React.createElement(Solution.FilterableProductTable, {products:products}), document.getElementById('react_workshop'));

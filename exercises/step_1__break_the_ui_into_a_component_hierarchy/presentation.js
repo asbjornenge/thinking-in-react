@@ -66,8 +66,8 @@ module.exports = function (callback) {
         }),
         component   = [],
         spacer      = "                                        ";
-        _spacer     = "       "
-        navigate    = function(direction) {
+        var _spacer     = "       "
+        var navigate    = function(direction) {
             var render  = function() {
                     var i;
 

@@ -13,3 +13,9 @@ Though this sounds like a lot it's really just a few lines of code. And it's rea
 # Exercise
 
 Create a function on `FilterableProductTable` called `handleUserInput`. Pass that as a `prop` to `SearchBar`. On the `SearchBar`, add an `onChange` handler to the inputs. Use this handler to determine the current state and set the state by invoking `handleUserInput` via `props`.
+
+# HINT(s)
+
+* Inputs might need a `ref`
+* `import ReactDOM from 'react-dom'` might come in handy
+* You can find a DOM node using `ReactDOM.findDOMNode(this.refs.<ref>)`

@@ -1,7 +1,13 @@
+var ReactDOM = require(process.cwd()+'/node_modules/react-dom')
+var ReactTestUtils = require('react-addons-test-utils')
+var assert = require('assert')
+var render = require('./render')
+var products = require('./products.json')
+
 describe('Static version - step 3', function() {
 
     afterEach(function(done) {
-        React.unmountComponentAtNode(document.body)
+        ReactDOM.unmountComponentAtNode(document.getElementById('react_workshop'))
         process.nextTick(done)
     })
 
@@ -16,7 +22,7 @@ describe('Static version - step 3', function() {
             var _productTable = ReactTestUtils.findRenderedComponentWithType(_comp, Solution.ProductTable)
             assert(_productTable != undefined)
             done()
-        })        
+        })
     })
 
     it('should contain a ProductRow', function(done) {
@@ -24,7 +30,7 @@ describe('Static version - step 3', function() {
             var _productRow = ReactTestUtils.scryRenderedComponentsWithType(_comp, Solution.ProductRow)
             assert(_productRow.length == products.length)
             done()
-        })        
+        })
     })
 
     it('should contain a ProductCategoryRow', function(done) {
@@ -32,7 +38,7 @@ describe('Static version - step 3', function() {
             var _productCategoryRow = ReactTestUtils.scryRenderedComponentsWithType(_comp, Solution.ProductCategoryRow)
             assert(_productCategoryRow.length == 2)
             done()
-        })        
+        })
     })
 
 })
