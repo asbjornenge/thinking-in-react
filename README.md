@@ -18,6 +18,11 @@ to play.
 
 ## Changelog
 
+### v2.0.0
+
+* Added support for JSX and ES2015 via Babel - thanks @ThibWeb
+* Updated to React v0.14
+
 ### v1.0.0
 
 * Using process.cwd() instead of process.env.PWD - improves Windows support
