@@ -18,6 +18,13 @@ to play.
 
 ## Changelog
 
+### v3.0.0
+
+* Bumped jsdom to v7
+
+Bumping jsdom introduces a breaking change (major release) since the new version no longer supports node 0.x.
+If you see build issues with `contextify` then make sure to upgrade to node 4+ and things should work.
+
 ### v2.0.0
 
 * Added support for JSX and ES2015 via Babel - thanks @ThibWeb

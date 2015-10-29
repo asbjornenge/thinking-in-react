@@ -16,7 +16,7 @@ exercise = execute(exercise)
 // Setup
 exercise.addSetup(function (mode, callback) {
     global.document  = jsdom('<html><body><div id="react_workshop"></div></body></html>')
-    global.window    = document.parentWindow
+    global.window    = document.defaultView
     global.navigator = window.navigator
     global.Solution  = require(path.resolve(process.cwd(), process.argv[3]))
 
