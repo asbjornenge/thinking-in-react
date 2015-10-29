@@ -24,6 +24,7 @@ to play.
 
 Bumping jsdom introduces a breaking change (major release) since the new version no longer supports node 0.x.
 If you see build issues with `contextify` then make sure to upgrade to node 4+ and things should work.
+If you don't want to upgrade node feel free to install `thinking-in-react@2.0.0` :smile:
 
 ### v2.0.0
 
