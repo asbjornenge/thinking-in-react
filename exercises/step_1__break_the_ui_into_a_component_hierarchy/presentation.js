@@ -271,7 +271,7 @@ module.exports = function (callback) {
                 blanker.append(new blessed.Text({
                     top     : 10,
                     left    : 'center',
-                    content : 'You have successfully completede step 1'
+                    content : 'You have successfully completed step 1'
                 }))
                 var blinker = new blessed.Text({
                     top     : 11,
