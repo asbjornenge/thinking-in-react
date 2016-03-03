@@ -18,6 +18,10 @@ to play.
 
 ## Changelog
 
+### v3.0.1
+
+* Fixed a typo via #17 - thanks @brian-stovall
+
 ### v3.0.0
 
 * Bumped jsdom to v7
