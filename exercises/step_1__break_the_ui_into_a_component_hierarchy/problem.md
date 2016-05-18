@@ -30,7 +30,7 @@ The first thing you'll want to do is to draw boxes around every component (and s
 
 # Exercise
 
-This first step is more of a guide than en exercise. Start by running the following command:
+This first step is more of a guide than an exercise. Start by running the following command:
 
 ```sh
 $ {appname} verify components
