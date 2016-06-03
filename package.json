@@ -31,9 +31,9 @@
     "envify": "^1.2.1",
     "jsdom": "^7.0.2",
     "mocha": "^1.19.0",
-    "react": "^0.14.0-rc1",
-    "react-addons-test-utils": "^0.14.0-rc1",
-    "react-dom": "^0.14.0-rc1",
+    "react": "^15.1.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-dom": "^15.1.0",
     "workshopper": "git://github.com/rvagg/workshopper.git#cef8219ca2919964113c6daedd78a5db8404051b",
     "workshopper-exercise": "^0.2.3",
     "workshopper-wrappedexec": "^0.1.1"
