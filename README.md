@@ -18,6 +18,10 @@ to play.
 
 ## Changelog
 
+### v3.1.0
+
+* Added support for React v15 (run/verify on step 5 broke previously with React v15)
+
 ### v3.0.1
 
 * Fixed a typo via #17 - thanks @brian-stovall
