@@ -1,9 +1,5 @@
-var React = require(process.cwd()+'/node_modules/react/addons')
 var ReactDOM = require(process.cwd()+'/node_modules/react-dom')
-// Note: in that specific case, we are using refs and as such want to have the same React instance.
-// See https://gist.github.com/jimfb/4faa6cbfb1ef476bd105#file-react-refs-must-have-owner-md
-// See https://facebook.github.io/react/docs/test-utils.html
-var ReactTestUtils = React.addons.TestUtils
+var ReactTestUtils = require('react-addons-test-utils') 
 var assert = require('assert')
 var render = require('./render')
 
