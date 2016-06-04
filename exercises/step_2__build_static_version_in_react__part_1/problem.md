@@ -14,11 +14,14 @@ Simply refer to the React docs if you need help executing this step; `http://fac
 
 # HINT(s)
 
-You are going to need reactjs for this exercise. Install it using npm.
+You are going to need react (and the test utils) for this exercise. Install it using npm. 
 
 ```sh
-$ npm install react@0.14.0-rc1 react-dom@0.14.0-rc1
+$ npm install react@15.1.0 react-dom@15.1.0
+$ npm install react-addons-test-utils@15.1.0
 ```
+
+As of React v15 we also need to install some react test utils in order to make things work.
 
 We are using ES2015 syntax in these exercises. Here is what a really basic React component looks like.
 

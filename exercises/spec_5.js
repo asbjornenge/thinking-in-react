@@ -1,5 +1,6 @@
+var React = require(process.cwd()+'/node_modules/react')
 var ReactDOM = require(process.cwd()+'/node_modules/react-dom')
-var ReactTestUtils = require('react-addons-test-utils') 
+var ReactTestUtils = require(process.cwd()+'/node_modules/react-addons-test-utils') 
 var assert = require('assert')
 var render = require('./render')
 
