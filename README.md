@@ -18,6 +18,11 @@ to play.
 
 ## Changelog
 
+### v3.1.1
+
+* Added `react-addons-test-utils` to install instructions
+* Using user local `react-addons-test-utils` fixes step 5 
+
 ### v3.1.0
 
 * Added support for React v15 (run/verify on step 5 broke previously with React v15)
