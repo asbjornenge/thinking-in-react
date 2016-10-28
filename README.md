@@ -18,6 +18,10 @@ to play.
 
 ## Changelog
 
+### v3.1.2
+
+* Updated the use of `refs` to functions instead of strings (now deprecated)
+
 ### v3.1.1
 
 * Added `react-addons-test-utils` to install instructions
