@@ -75,8 +75,8 @@ export const ProductTable = React.createClass({
 
 export const SearchBar = React.createClass({
     handleChange() {
-        const filterText = ReactDOM.findDOMNode(this.refs.filterText).value;
-        const inStockOnly = ReactDOM.findDOMNode(this.refs.inStockOnly).checked;
+        const filterText = this.filterText.value;
+        const inStockOnly = this.inStockOnly.checked;
 
         this.props.onUserInput(filterText, inStockOnly);
     },
@@ -87,7 +87,7 @@ export const SearchBar = React.createClass({
         return (
             <form>
                 <input
-                    ref="filterText"
+                    ref={(r) => this.filterText = r}
                     type="search"
                     placeholder="Search..."
                     value={filterText}
@@ -95,7 +95,7 @@ export const SearchBar = React.createClass({
                 />
                 <label>
                     <input
-                        ref="inStockOnly"
+                        ref={(r) => this.inStockOnly = r}
                         type="checkbox"
                         checked={inStockOnly}
                         onChange={this.handleChange}
